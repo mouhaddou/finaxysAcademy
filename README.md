@@ -5,7 +5,8 @@
 1) Télécharger Intellij IDEA Community version.
 2) Télécharger JDK 11 et installer Java (Il faut s'assurer que la commande java fonctionne)
 3) Télécharger Maven 3.6 et s'assurer que la commande mvn -version fonctionne 
-4) Télécharger git 
+4) Télécharger git
+5) Télécharger postman 
 
 ## II - Builder et exécuter la squelette du projet
 
