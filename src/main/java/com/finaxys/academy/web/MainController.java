@@ -9,10 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,18 +19,12 @@ public class MainController {
 
     @Autowired
     private ClientService clientService;
-
+    @CrossOrigin
     @ResponseBody
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public ResponseEntity getAll() {
+    public List<Client> getAll() {
         List<Client> all = clientService.getAllClients();
-        if(!all.isEmpty()) {
-            return new ResponseEntity(all, HttpStatus.OK);
-        }
-        else {
-            return new ResponseEntity("There is no client in the store.",HttpStatus.OK);
-        }
-
+            return all;
     }
     // create a new employee
     @RequestMapping(value = "/createEmpl", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -59,5 +50,4 @@ public class MainController {
         }
         return new ResponseEntity("Employee : "+ client.getId()+ "has been successfly updated ",HttpStatus.OK);
     }
-
 }
