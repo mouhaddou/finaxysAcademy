@@ -27,6 +27,7 @@ public class MainController {
             return all;
     }
     // create a new employee
+    @CrossOrigin
     @RequestMapping(value = "/createEmpl", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createEmployee(@RequestBody Client client){
         clientService.saveClient(client);
