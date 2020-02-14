@@ -27,16 +27,19 @@ public class MainController {
             return all;
     }
     // create a new employee
+    @CrossOrigin
     @RequestMapping(value = "/createEmpl", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createEmployee(@RequestBody Client client){
         clientService.saveClient(client);
         return new ResponseEntity ("Emplyee created",HttpStatus.CREATED);
     }
     // delete employee by id
-    @RequestMapping(value="deleteEmpl", method = RequestMethod.DELETE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteEmpl(@RequestBody Client client){
-        clientService.delete(client);
-        return new ResponseEntity("Employee : "+ client.getId()+ "is successfly deleted",HttpStatus.OK);
+    @CrossOrigin
+    @RequestMapping(value="/'deleteEmpl/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteEmpl(@PathVariable("id") Long id){
+        Optional <Client> cli = clientService.findById(id);
+        clientService.delete(cli.get());
+        return new ResponseEntity("Employee : "+ cli.get().getId()+ "is successfly deleted",HttpStatus.OK);
     }
 
     // update employee

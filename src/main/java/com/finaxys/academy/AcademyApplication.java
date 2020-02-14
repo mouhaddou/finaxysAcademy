@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 @SpringBootApplication
 public class AcademyApplication {
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(AcademyApplication.class, args);
 	}
