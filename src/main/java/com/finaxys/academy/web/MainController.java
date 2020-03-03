@@ -26,6 +26,14 @@ public class MainController {
         List<Client> all = clientService.getAllClients();
             return all;
     }
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping(value = "/getById/{id}",method = RequestMethod.GET)
+    public Optional <Client> getById(@PathVariable("id") Long id) {
+        Optional <Client> clii = clientService.findById(id);
+        return clii;
+    }
+
     // create a new employee
     @CrossOrigin
     @RequestMapping(value = "/createEmpl", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
